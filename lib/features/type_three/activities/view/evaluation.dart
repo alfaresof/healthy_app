@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:healthy_app/config/colors.dart';
 
 import '../../../../shared_component/circular_continer.dart';
 import '../../../../shared_component/evaluation_container.dart';
@@ -17,19 +18,19 @@ class _EvaluationState extends ConsumerState<Evaluation> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: AppColors.green,
         shadowColor: Colors.white.withOpacity(0),
         centerTitle: true,
         title: const Text(
           'Item',
-          style: TextStyle(fontSize: 40, color: Colors.black),
+          style: TextStyle(fontSize: 30, color: Colors.white),
         ),
         actions: [
           IconButton(
             onPressed: () => Navigator.pushNamed(context, '/plan'),
             icon: const Icon(
               Icons.arrow_forward,
-              color: Colors.black,
+              color: Colors.white,
             ),
           )
         ],
@@ -39,7 +40,7 @@ class _EvaluationState extends ConsumerState<Evaluation> {
         physics: const ScrollPhysics(),
         child: Center(
           child: Wrap(
-            alignment: WrapAlignment.center,
+            alignment: WrapAlignment.start,
             children: [
               CircularContiner(
                 onTap: () => Navigator.pushNamed(context, '/evaluation'),
@@ -55,9 +56,12 @@ class _EvaluationState extends ConsumerState<Evaluation> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Text(
-                'Evidence of Compliance',
-                style: TextStyle(fontSize: 30, color: Colors.black),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  'Evidence of Compliance',
+                  style: TextStyle(fontSize: 25, color: Colors.black),
+                ),
               ),
               CircularContiner(
                 onTap: () => Navigator.pushNamed(context, '/evaluation'),

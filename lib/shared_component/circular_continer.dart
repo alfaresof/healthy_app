@@ -9,6 +9,7 @@ class CircularContiner extends StatelessWidget {
   final EdgeInsets? margin;
   final Widget child;
   final Color? color;
+  final Color? borderColor;
   final Function()? onTap;
 
   const CircularContiner(
@@ -18,6 +19,7 @@ class CircularContiner extends StatelessWidget {
       this.padding,
       this.margin,
       this.onTap,
+      this.borderColor,
       required this.child,
       this.color})
       : super(key: key);
@@ -33,9 +35,19 @@ class CircularContiner extends StatelessWidget {
         height: height,
         padding: padding,
         decoration: BoxDecoration(
-          color: color ?? AppColors.white,
-          borderRadius: BorderRadius.circular(30),
-        ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                offset: Offset(1, 1),
+                blurRadius: 20,
+              ),
+            ],
+            color: color ?? AppColors.white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: borderColor ?? AppColors.strokeGreen,
+              width: 2,
+            )),
         child: child,
       ),
     );

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:healthy_app/config/colors.dart';
 
+import '../../../../config/colors.dart';
 import '../../../../shared_component/circular_continer.dart';
 
-class ActionPlan extends ConsumerStatefulWidget {
-  const ActionPlan({super.key});
+class DomainOne extends ConsumerStatefulWidget {
+  const DomainOne({super.key});
 
   @override
-  ConsumerState createState() => _ActionPlanState();
+  ConsumerState createState() => _DomainOneState();
 }
 
-class _ActionPlanState extends ConsumerState<ActionPlan> {
+class _DomainOneState extends ConsumerState<DomainOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +19,23 @@ class _ActionPlanState extends ConsumerState<ActionPlan> {
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.green,
         shadowColor: Colors.white.withOpacity(0),
-        centerTitle: true,
-        title: const Text(
-          'Action Plan',
-          style: TextStyle(fontSize: 30, color: Colors.white),
+        title: Text(
+          'domain',
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {},
+            icon: const Icon(
+              Icons.density_medium,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          IconButton(
+            onPressed: () => Navigator.pushNamed(context, '/health_care_one'),
             icon: const Icon(
               Icons.arrow_forward,
               color: Colors.white,
@@ -41,29 +50,30 @@ class _ActionPlanState extends ConsumerState<ActionPlan> {
           child: Wrap(
             alignment: WrapAlignment.center,
             children: [
-              ListView.builder(
+              GridView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 physics: const ScrollPhysics(),
                 itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
                 itemBuilder: (context, index) {
                   return CircularContiner(
-                    onTap: () => Navigator.pushNamed(context, '/evaluation'),
-                    padding: EdgeInsets.all(20),
+                    onTap: () => Navigator.pushNamed(context, '/item'),
                     margin: const EdgeInsets.symmetric(
                       horizontal: 10,
                       vertical: 20,
                     ),
                     width: 100,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          '''Completion of patients' health records in HIS, Wasfaty program...etc''',
-                          style: TextStyle(fontSize: 20),
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
+                    height: 100,
+                    borderColor: AppColors.green,
+                    child: const Text(
+                      'TPC Huddle Metting',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: AppColors.green,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   );
                 },

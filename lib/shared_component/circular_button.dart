@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:healthy_app/config/colors.dart';
 
 class CircularButton extends StatelessWidget {
   final String title;
   final Function() onPressed;
   final Color? color;
+  final Color? textColor;
   final double? width;
 
-  const CircularButton(
-      {super.key,
-      required this.title,
-      required this.onPressed,
-      this.color,
-      this.width});
+  const CircularButton({
+    super.key,
+    required this.title,
+    required this.onPressed,
+    this.color,
+    this.textColor,
+    this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +24,18 @@ class CircularButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: color ?? Colors.white,
+          elevation: 0,
+          backgroundColor: color ?? AppColors.green,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 30,
-              color: Colors.black,
+              color: textColor ?? Colors.white,
             ),
           ),
         ),

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:healthy_app/config/colors.dart';
+import 'package:healthy_app/features/type_two/home/view/widget/health_care_container_summary.dart';
 import 'package:healthy_app/shared_component/circular_continer.dart';
 import 'package:healthy_app/shared_component/member_container.dart';
 
 import '../../../../shared_component/health_care_container.dart';
 
-class HomeTypeThree extends ConsumerStatefulWidget {
-  const HomeTypeThree({super.key});
+class HomeTypeOne extends ConsumerStatefulWidget {
+  const HomeTypeOne({super.key});
 
   @override
   ConsumerState createState() => _HomeTypeThreeState();
 }
 
-class _HomeTypeThreeState extends ConsumerState<HomeTypeThree> {
+class _HomeTypeThreeState extends ConsumerState<HomeTypeOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,7 @@ class _HomeTypeThreeState extends ConsumerState<HomeTypeThree> {
         backgroundColor: AppColors.green,
         shadowColor: Colors.white.withOpacity(0),
         title: Text(
-          'Team Members',
+          'zones',
         ),
         centerTitle: true,
         actions: [
@@ -37,7 +38,7 @@ class _HomeTypeThreeState extends ConsumerState<HomeTypeThree> {
             width: 10,
           ),
           IconButton(
-            onPressed: () => Navigator.pushNamed(context, '/activities'),
+            onPressed: () => Navigator.pushNamed(context, '/domain_one'),
             icon: const Icon(
               Icons.arrow_forward,
               color: Colors.white,
@@ -47,42 +48,36 @@ class _HomeTypeThreeState extends ConsumerState<HomeTypeThree> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
         child: Center(
-          child: Column(
+          child: Wrap(
+            alignment: WrapAlignment.center,
             children: [
-              HealthCareContainer(),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                      height: 30,
-                      child: FittedBox(
-                        child: Text('Team Members'),
-                      )),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.black,
-                        size: 40,
-                      )),
-                ],
-              ),
-              ListView.builder(
+              GridView.builder(
                 scrollDirection: Axis.vertical,
-                physics: ScrollPhysics(),
                 shrinkWrap: true,
+                physics: const ScrollPhysics(),
                 itemCount: 10,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return MemberContainer(
-                    name: 'ahmed',
-                    phoneNumber: '0507857877',
-                    role: 'doctor',
-                    specialty: 'boss',
+                  return CircularContiner(
+                    onTap: () => Navigator.pushNamed(context, '/item'),
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 20,
+                    ),
+                    width: 100,
+                    height: 100,
+                    borderColor: AppColors.green,
+                    child: const Text(
+                      'Riyadh',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: AppColors.green,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   );
                 },
               )

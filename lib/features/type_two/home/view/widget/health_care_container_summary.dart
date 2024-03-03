@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:healthy_app/shared_component/circular_continer.dart';
 
-class HealthCareContainer extends StatelessWidget {
-  const HealthCareContainer({super.key});
+class HealthCareContainerSummary extends StatelessWidget {
+  const HealthCareContainerSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,6 @@ class HealthCareContainer extends StatelessWidget {
                 SizedBox(height: 10),
                 Text(
                   'Health Zone Name',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Team Based Care Code',
                   style: TextStyle(
                     fontSize: 20,
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:healthy_app/config/colors.dart';
 
 import '../../../../shared_component/circular_continer.dart';
 
@@ -16,14 +17,19 @@ class _ActivitiesDetailsState extends ConsumerState<ActivitiesDetails> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: AppColors.green,
         shadowColor: Colors.white.withOpacity(0),
+        centerTitle: true,
+        title: Text(
+          'Recption Activities',
+          style: TextStyle(fontSize: 30, color: Colors.white),
+        ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.arrow_forward,
-              color: Colors.black,
+              color: Colors.white,
             ),
           )
         ],
@@ -35,10 +41,6 @@ class _ActivitiesDetailsState extends ConsumerState<ActivitiesDetails> {
           child: Wrap(
             alignment: WrapAlignment.center,
             children: [
-              const Text(
-                'Recption Activities',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
               ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,

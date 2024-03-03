@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../config/colors.dart';
+import '../../../../../config/colors.dart';
 
-class CustomTextField extends StatelessWidget {
+class TextFieldWithoutIcon extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final String? svgPath;
+  final double? width;
 
-  const CustomTextField({
+  const TextFieldWithoutIcon({
     super.key,
     required this.controller,
     required this.hintText,
     this.svgPath,
+    this.width,
   });
 
   @override
